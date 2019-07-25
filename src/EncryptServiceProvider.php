@@ -19,13 +19,6 @@ class EncryptServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // if ($this->app->runningInConsole()) {
-        //     $this->commands([
-        //         EncryptModel::class,
-        //         DecryptModel::class
-        //     ]);
-        // }
-
         $this->bootValidators();
     }
 
