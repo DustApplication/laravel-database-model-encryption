@@ -8,15 +8,15 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Magros\\Encryptable\\": "src/"
+            "DustApplication\\Encryptable\\": "src/"
         }
     },
     "authors": [
         {
-            "name": "Joesel Duazo",
-            "email": "duazojoesel183@gmail.com",
+            "name"    : "Joesel Duazo",
+            "email"   : "duazojoesel183@gmail.com",
             "homepage": "https://github.com/JoeselDuazo",
-            "role": "Developer"
+            "role"    : "Developer"
         }
     ],
     "require": {
@@ -27,7 +27,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Magros\\Encryptable\\EncryptServiceProvider"
+                "DustApplication\\Encryptable\\EncryptServiceProvider"
             ],
             "dont-discover": [
                 "*"
