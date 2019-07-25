@@ -6,7 +6,7 @@
  * @version     v0.3.18
  */
 
-namespace Magros\Encryptable;
+namespace DustApplication\Encryptable;
 
 use Illuminate\Database\Eloquent\Builder;
 

@@ -1,5 +1,5 @@
 <?php
-namespace Magros\Encryptable;
+namespace DustApplication\Encryptable;
 
 use Illuminate\Database\ConnectionInterface;
 use Illuminate\Database\Query\Builder;

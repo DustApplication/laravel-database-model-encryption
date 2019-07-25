@@ -1,5 +1,5 @@
 <?php
-namespace Magros\Encryptable;
+namespace DustApplication\Encryptable;
 use Illuminate\Support\Facades\Config;
 
 class Encrypter

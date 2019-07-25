@@ -1,4 +1,4 @@
-<?php namespace Magros\Encryptable;
+<?php namespace DustApplication\Encryptable;
 
 trait Encryptable
 {

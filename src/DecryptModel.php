@@ -1,6 +1,6 @@
 <?php
 
-namespace Magros\Encryptable;
+namespace DustApplication\Encryptable;
 
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Model;
