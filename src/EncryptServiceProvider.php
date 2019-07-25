@@ -62,10 +62,15 @@ class EncryptServiceProvider extends ServiceProvider
             }else{
                 // Check if existing on encrypted fields if result is false
                 $data = DB::table($parameters[0])->get()->filter(function ($item) use ($value, $parameters, $ignore_id, $withFilter) {
+                    $itemValue = isset($item->{$parameters[1]}) ? $item->{$parameters[1]} : '';
+                    try {
+                        $itemValue = Crypt::decrypt($itemValue);
+                    } catch (\Exception $e) {}
+
                     if($withFilter){
-                        return Crypt::decrypt($item->{$parameters[1]}) == $value && $item->{$parameters[2]} == $parameters[3] && $item->id != $ignore_id;
+                        return $itemValue == $value && $item->{$parameters[2]} == $parameters[3] && $item->id != $ignore_id;
                     }else{
-                        return Crypt::decrypt($item->{$parameters[1]}) == $value && $item->id != $ignore_id;
+                        return $itemValue == $value && $item->id != $ignore_id;
                     }
                 });
                 if($data->first()){
@@ -103,10 +108,15 @@ class EncryptServiceProvider extends ServiceProvider
             }else{
                 // Check if existing on encrypted fields
                 $data = DB::table($parameters[0])->get()->filter(function ($item) use ($value, $parameters, $ignore_id, $withFilter) {
+                            $itemValue = isset($item->{$parameters[1]}) ? $item->{$parameters[1]} : '';
+                            try {
+                                $itemValue = Crypt::decrypt($itemValue);
+                            } catch (\Exception $e) {}
+
                             if($withFilter){
-                                return Crypt::decrypt($item->{$parameters[1]}) == $value && $item->{$parameters[2]} == $parameters[3] && $item->id != $ignore_id;
+                                return $itemValue == $value && $item->{$parameters[2]} == $parameters[3] && $item->id != $ignore_id;
                             }else{
-                                return Crypt::decrypt($item->{$parameters[1]}) == $value && $item->id != $ignore_id;
+                                return $itemValue == $value && $item->id != $ignore_id;
                             }
                         });
                 if($data->first()){
