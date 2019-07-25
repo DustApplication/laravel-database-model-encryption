@@ -21,7 +21,6 @@
     ],
     "require": {
         "php": ">=7.1",
-        "ext-openssl": "*",
         "illuminate/database": "^5.7"
     },
     "minimum-stability": "stable",
