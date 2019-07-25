@@ -1,5 +1,5 @@
 <?php
-namespace Dust\Encryption\Providers;
+namespace DustApplication\Encryption\Providers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
