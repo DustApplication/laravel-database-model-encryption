@@ -10,7 +10,7 @@ namespace DustApplication\Encryptable\Builders;
 
 use Illuminate\Database\Eloquent\Builder;
 
-class EncryptionBuilder extends Builder
+class EncryptionEloquentBuilder extends Builder
 {
     public function whereEncrypted($param1, $param2, $param3 = null)
     {

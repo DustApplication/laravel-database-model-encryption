@@ -9,7 +9,7 @@
 namespace DustApplication\Encryption\Traits;
 
 
-use DustApplication\Encryption\Builders\EncryptionBuilder;
+use DustApplication\Encryption\Builders\EncryptionEloquentBuilder;
 use Illuminate\Support\Facades\Crypt;
 trait EncryptableAttribute {
 
