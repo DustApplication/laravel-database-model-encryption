@@ -1,6 +1,6 @@
 <?php
 
-namespace DustApplication\Encryptable;
+namespace Dustapplication\Encryptable;
 
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Model;

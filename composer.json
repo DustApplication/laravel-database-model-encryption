@@ -8,7 +8,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "DustApplication\\Encryptable\\": "src/"
+            "Dustapplication\\Encryptable\\": "src/"
         }
     },
     "authors": [
@@ -27,7 +27,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "DustApplication\\Encryptable\\EncryptServiceProvider"
+                "Dustapplication\\Encryptable\\EncryptServiceProvider"
             ],
             "dont-discover": [
                 "*"

@@ -1,5 +1,5 @@
 <?php
-namespace DustApplication\Encryptable;
+namespace Dustapplication\Encryptable;
 use Illuminate\Support\Facades\Config;
 
 class Encrypter

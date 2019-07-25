@@ -6,10 +6,10 @@
  * @version     v0.3.18
  */
 
-namespace DustApplication\Encryptable;
+namespace Dustapplication\Encryptable;
 
 
-use Magros\Encryptable\Builders\EncryptionBuilder;
+use Dustapplication\Encryptable\EncryptionBuilder;
 use Illuminate\Support\Facades\Crypt;
 trait EncryptableAttribute {
 
