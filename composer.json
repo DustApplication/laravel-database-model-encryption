@@ -1,7 +1,10 @@
 {
     "name": "joeselduazo/laravel-database-model-encryption",
-    "description": "A trait to encrypt data models in Laravel, automatically encrypt and decrypt model data overriding getAttribute an setAttribute methods of Eloquent Model.",
-    "keywords": ["encrypt", "laravel", "laravel 5", "eloquent", "model"],
+    "description": "Provides database encryption/decryption with search encrypted fields.",
+    "keywords": ["laravel", "encrypt", "database", "eloquent","model","attribute","decrypt","encryption", "decryption","encrypted",
+                 "decrypted","db","laravel5","laravel55","laravel56","laravel57","laravel58","laravel encryption","model encryption",
+                 "attribute encryption","database encryption","encryption search","crypt","encrypted search","where encrypted"
+    ],
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -10,8 +13,10 @@
     },
     "authors": [
         {
-            "name": "Marco Antonio Godinez",
-            "email": "iron-rocks@hotmail.com"
+            "name": "Joesel Duazo",
+            "email": "duazojoesel183@gmail.com",
+            "homepage": "https://github.com/JoeselDuazo",
+            "role": "Developer"
         }
     ],
     "require": {
