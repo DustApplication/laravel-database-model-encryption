@@ -6,10 +6,10 @@
  * @version     v0.3.18
  */
 
-namespace Dustapplication\Encryptable;
+namespace Dust\Encryptable;
 
 
-use Dustapplication\Encryptable\EncryptionBuilder;
+use Dust\Encryptable\EncryptionBuilder;
 use Illuminate\Support\Facades\Crypt;
 trait EncryptableAttribute {
 

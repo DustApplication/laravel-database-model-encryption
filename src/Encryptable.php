@@ -1,4 +1,4 @@
-<?php namespace Dustapplication\Encryptable;
+<?php namespace Dust\Encryptable;
 
 trait Encryptable
 {

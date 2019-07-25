@@ -6,7 +6,7 @@
  * @version     v0.3.18
  */
 
-namespace Dustapplication\Encryptable;
+namespace Dust\Encryptable;
 
 use Illuminate\Database\Eloquent\Builder;
 
