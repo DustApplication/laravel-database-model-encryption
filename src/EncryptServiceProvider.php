@@ -1,5 +1,5 @@
 <?php
-namespace Magros\Encryptable;
+namespace Dust\Encryptable;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
