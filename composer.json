@@ -8,11 +8,6 @@
             "Magros\\Encryptable\\": "src/"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Magros\\Encryptable\\Tests\\": "tests/"
-        }
-    },
     "authors": [
         {
             "name": "Marco Antonio Godinez",
