@@ -35,19 +35,19 @@ class EncryptionEloquentBuilder extends Builder
         }elseif(in_array($filter->operation,['!=','!==','<>'])){
           return $itemValue != $filter->value || $itemValue !== $filter->value || $itemValue <> $filter->value;
         }elseif(strtolower($filter->operation) == 'like'){
-          $firstChar = substr($itemValue, 0, 1);
-          $lastChar  = substr($itemValue, -1);
-          $itemValue = str_replace('%','',$itemValue);
+          $firstChar = substr($filter->value, 0, 1);
+          $lastChar  = substr($filter->value, -1);
+          $filterValue = str_replace('%',$filter->value);
 
 
           if($firstChar == '%' && $lastChar == '%'){
-            return strripos($filter->value,$itemValue) === false ? false : true;
+            return strripos($itemValue,$filterValue) === false ? false : true;
           }elseif($firstChar !== '%'){
-            return strripos($filter->value,$itemValue) === 0;
+            return strripos($itemValue,$filterValuee) === 0;
           }elseif($lastChar !== '%'){
-            return strripos($filter->value,$itemValue) > 0;
+            return strripos($itemValue,$filterValuee) > 0;
           }else{
-            return strripos($filter->value,$itemValue) === false ? false : true;
+            return strripos($itemValue,$filterValuee) === false ? false : true;
           }
         }
       })->pluck('id');
@@ -77,18 +77,18 @@ class EncryptionEloquentBuilder extends Builder
         }elseif(in_array($filter->operation,['!=','!==','<>'])){
           return $itemValue != $filter->value || $itemValue !== $filter->value || $itemValue <> $filter->value;
         }elseif(strtolower($filter->operation) == 'like'){
-          $firstChar = substr($itemValue, 0, 1);
-          $lastChar  = substr($itemValue, -1);
-          $itemValue = str_replace('%','',$itemValue);
+          $firstChar = substr($filter->value, 0, 1);
+          $lastChar  = substr($filter->value, -1);
+          $filterValue = str_replace('%',$filter->value);
 
           if($firstChar == '%' && $lastChar == '%'){
-            return strripos($filter->value,$itemValue) === false ? false : true;
+            return strripos($itemValue,$filterValuee) === false ? false : true;
           }elseif($firstChar !== '%'){
-            return strripos($filter->value,$itemValue) === 0;
+            return strripos($itemValue,$filterValuee) === 0;
           }elseif($lastChar !== '%'){
-            return strripos($filter->value,$itemValue) > 0;
+            return strripos($itemValue,$filterValuee) > 0;
           }else{
-            return strripos($filter->value,$itemValue) === false ? false : true;
+            return strripos($itemValue,$filterValuee) === false ? false : true;
           }
         }
       })->pluck('id');
