@@ -5,7 +5,6 @@
  * @author      JoeselDuazo <http://joeselduazo.com/>
  * @version     v0.3.18
  */
-
 namespace DustApplication\Encryption\Builders;
 
 use Illuminate\Database\Eloquent\Builder;
