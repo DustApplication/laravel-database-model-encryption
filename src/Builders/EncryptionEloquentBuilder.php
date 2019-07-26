@@ -41,13 +41,13 @@ class EncryptionEloquentBuilder extends Builder
 
 
           if($firstChar == '%' && $lastChar == '%'){
-            return strripos('joesel.duazo@webee.com.mt',$itemValue) === false ? false : true;
+            return strripos($filter->value,$itemValue) === false ? false : true;
           }elseif($firstChar !== '%'){
-            return strripos('joesel.duazo@webee.com.mt',$itemValue) === 0;
+            return strripos($filter->value,$itemValue) === 0;
           }elseif($lastChar !== '%'){
-            return strripos('joesel.duazo@webee.com.mt',$itemValue) > 0;
+            return strripos($filter->value,$itemValue) > 0;
           }else{
-            return strripos('joesel.duazo@webee.com.mt',$itemValue) === false ? false : true;
+            return strripos($filter->value,$itemValue) === false ? false : true;
           }
         }
       })->pluck('id');
@@ -82,13 +82,13 @@ class EncryptionEloquentBuilder extends Builder
           $itemValue = str_replace('%','',$itemValue);
 
           if($firstChar == '%' && $lastChar == '%'){
-            return strripos('joesel.duazo@webee.com.mt',$itemValue) === false ? false : true;
+            return strripos($filter->value,$itemValue) === false ? false : true;
           }elseif($firstChar !== '%'){
-            return strripos('joesel.duazo@webee.com.mt',$itemValue) === 0;
+            return strripos($filter->value,$itemValue) === 0;
           }elseif($lastChar !== '%'){
-            return strripos('joesel.duazo@webee.com.mt',$itemValue) > 0;
+            return strripos($filter->value,$itemValue) > 0;
           }else{
-            return strripos('joesel.duazo@webee.com.mt',$itemValue) === false ? false : true;
+            return strripos($filter->value,$itemValue) === false ? false : true;
           }
         }
       })->pluck('id');
