@@ -10,7 +10,7 @@ namespace DustApplication\Encryption\Traits;
 
 
 use DustApplication\Encryption\Builders\EncryptionEloquentBuilder;
-use Illuminate\Support\Facades\Crypt;
+use DustApplication\Encryption\Encrypter;
 trait EncryptableAttribute {
 
     public function getAttribute($key)
@@ -19,7 +19,7 @@ trait EncryptableAttribute {
       if (in_array($key, $this->encryptable) && (!is_null($value) && $value != ''))
       {
         try {
-          $value = Crypt::decrypt($value);
+          $value = Encrypter::decrypt($value);
         } catch (\Exception $th) {}
       }
       return $value;
@@ -30,7 +30,7 @@ trait EncryptableAttribute {
       if (in_array($key, $this->encryptable))
       {
         try {
-          $value = Crypt::encrypt($value);
+          $value = Encrypter::encrypt($value);
         } catch (\Exception $th) {}
       }
       return parent::setAttribute($key, $value);
@@ -46,7 +46,7 @@ trait EncryptableAttribute {
             {
               $attributes[$key] = $value;
               try {
-                $attributes[$key] = Crypt::decrypt($value);
+                $attributes[$key] = Encrypter::decrypt($value);
               } catch (\Exception $th) {}
             }
           }
@@ -54,9 +54,19 @@ trait EncryptableAttribute {
         return $attributes;
     }
     
-    // Extend EncryptionBuilder
+    // Extend EncryptionEloquentBuilder
     public function newEloquentBuilder($query)
     {
-        return new EncryptionBuilder($query);
+        return new EncryptionEloquentBuilder($query);
+    }
+
+    public function decryptAttribute($value)
+    {
+       return $value ? Encrypter::decrypt($value) : '';
+    }
+
+    public function encryptAttribute($value)
+    {
+        return $value ? Encrypter::encrypt($value) : '';
     }
 }

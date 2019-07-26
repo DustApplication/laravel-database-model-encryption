@@ -1,6 +1,6 @@
 <?php
 
-namespace Dust\Encryptable;
+namespace DustApplication\Encryption\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Model;
@@ -8,14 +8,14 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class DecryptModel extends Command
+class EncryptModel extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'encryptable:decryptModel {model}';
+    protected $signature = 'encryptable:encryptModel {model}';
 
     /**
      * The console command description.
@@ -39,18 +39,18 @@ class DecryptModel extends Command
         $this->model = $this->guardClass($class);
         $this->attributes = $this->model->getEncryptableAttributes();
         $table = $this->model->getTable();
-        $total = $this->model->where('encrypted', 1)->count();
+        $total = $this->model->where('encrypted', 0)->count();
         $this->model::$enableEncryption = false;
 
         if($total > 0){
-            $this->comment($total.' records will be decrypted');
+            $this->comment($total.' records will be encrypted');
             $bar = $this->output->createProgressBar($total);
             $bar->setFormat('%current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%');
 
-            $records =  $this->model->orderBy('id', 'asc')->where('encrypted', 1)->get();
+            $records =  $this->model->orderBy('id', 'asc')->where('encrypted', 0)->get();
             foreach ($records as $record) {
                 $record->timestamps = false;
-                $attributes = $this->getDecryptedAttributes($record);
+                $attributes = $this->getEncryptedAttributes($record);
                 DB::table($table)->where('id', $record->id)->update($attributes);
                 $bar->advance();
                 $record = null;
@@ -62,16 +62,14 @@ class DecryptModel extends Command
         $this->comment('Finished encryption');
     }
 
-    private function getDecryptedAttributes($record)
+    private function getEncryptedAttributes($record)
     {
-        $encryptedFields = ['encrypted' => 0 ];
+        $encryptedFields = ['encrypted' => 1];
 
         foreach ($this->attributes as $attribute) {
             $raw = $record->{$attribute};
-
-            if (str_contains($raw, $record->encrypter()->getPrefix())) {
-
-                $encryptedFields[$attribute] = $this->model->decryptAttribute($raw);
+            if (!str_contains($raw, $record->encrypter()->getPrefix())) {
+                $encryptedFields[$attribute] = $this->model->encryptAttribute($raw);
             }
         }
         return $encryptedFields;

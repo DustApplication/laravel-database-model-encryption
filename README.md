@@ -40,17 +40,16 @@ We highly recommend to alter your column types to `TEXT` or `LONGTEXT`
 Via Composer command line:
 
 ```bash
-$ composer require JoeselDuazo/laravel-db-encryption
+$ composer require dustapplication/laravel-database-model-encryption
 ```
 
-Or add the package to your `composer.json`:
-
-```json
-{
-    "require": {
-        "JoeselDuazo/laravel-db-encryption": "^0.318"
-    }
-}
+#Add ServiceProvider to your app/config.php file (Laravel 5.4 or below)
+Add the service provider to the providers array in the config/app.php config file as follows:
+```php
+    'providers' => [
+        ...
+        \DustApplication\Encryption\Providers\EncryptServiceProvider::class,
+    ],
 ```
 
 ## Usage
@@ -62,7 +61,7 @@ For example:
 
 ```php
     
-    use DustApplication\Database\Encryption\Traits\EncryptedAttribute;
+    use DustApplication\Encryption\Traits\EncryptedAttribute;
 
     class User extends Eloquent {
         use EncryptedAttribute;
@@ -100,11 +99,25 @@ similar to laravel eloquent `where` and `orWhere`.
         }
     }
 ```
-
-## NOTE
-The use of encryption searching is for small group of data only (approx 100K).
+NOTE:
+The use of encryption searching is recommended for small group of data.
 Using it on large amount of data rows will affects the performance.
 
+##Encrypt your current data
+ If you have current data in your database you can encrypt it with the: 
+    `php artisan encryptable:encryptModel 'App\User'` command.
+    
+ Additionally you can decrypt it using the:
+    `php artisan encryptable:decryptModel 'App\User'` command.
+
+ Note: You must implement first the `Encryptable` trait and set `$encryptable` attributes
+
+## Exists and Unique Validation Rules
+ If you are using exists and unique rules with encrypted values replace it with exists_encrypted and unique_encrypted 
+    ```php      
+      $validator = validator(['email'=>'foo@bar.com'], ['email'=>'exists_encrypted:users,email']);
+      $validator = validator(['email'=>'foo@bar.com'], ['email'=>'unique_encrypted:users,email']);
+    ```
 
 ## Frequently Asked Question
 
@@ -121,7 +134,7 @@ If you need to search on data then use the `whereEncrypted` and `orWhereEncrypte
     User::whereEncrypted('email','test@gmail.com')->orWhereEncrypted('email','test2@gmail.com')->firstOrFail();
 ```
 
-It automatically added on the eloquent once the model uses `EncryptedAttribute`
+It will automatically added on the eloquent once the model uses `EncryptedAttribute`
 
 ### Can I encrypt all my `User` model data?
 
@@ -137,7 +150,10 @@ $user = User::whereEncrypted('email','test@gmail.com')->filter(function ($item) 
 
 ## Credits
 
-This package was inspired from [austinheap/laravel-database-encryption](https://github.com/austinheap/laravel-database-encryption)
+This package was inspired from the following:
+ 
+ [austinheap/laravel-database-encryption](https://github.com/austinheap/laravel-database-encryption)
+ [magros/laravel-model-encryption](https://github.com/magros/laravel-model-encryption)
 
 
 ## License
