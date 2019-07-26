@@ -58,7 +58,8 @@ class EncryptServiceProvider extends ServiceProvider
             }
             
             // Check using normal checker
-            $data = DB::table($parameters[0])->where($parameters[1],$value)->where('id','!=',$ignore_id);
+            $data = DB::table($parameters[0])->where($parameters[1],$value);
+            $data = $ignore_id != '' ? $data->where('id','!=',$ignore_id) : $data;
             if($withFilter){
                 $data->where($parameters[2],$parameters[3]);
             }
@@ -73,9 +74,9 @@ class EncryptServiceProvider extends ServiceProvider
                     } catch (\Exception $e) {}
 
                     if($withFilter){
-                        return $itemValue == $value && $item->{$parameters[2]} == $parameters[3] && $item->id != $ignore_id;
+                        return $itemValue == $value && $item->{$parameters[2]} == $parameters[3] && ($ignore_id != '' ? $item->id != $ignore_id : true) == true;
                     }else{
-                        return $itemValue == $value && $item->id != $ignore_id;
+                        return $itemValue == $value && ($ignore_id != '' ? $item->id != $ignore_id : true) == true;
                     }
                 });
                 if($data->first()){
@@ -104,7 +105,9 @@ class EncryptServiceProvider extends ServiceProvider
             }
             
             // Check using normal checker
-            $data = DB::table($parameters[0])->where($parameters[1],$value)->where('id','!=',$ignore_id);
+            $data = DB::table($parameters[0])->where($parameters[1],$value);
+            $data = $ignore_id != '' ? $data->where('id','!=',$ignore_id) : $data;
+
             if($withFilter){
                 $data->where($parameters[2],$parameters[3]);
             }
@@ -119,9 +122,9 @@ class EncryptServiceProvider extends ServiceProvider
                             } catch (\Exception $e) {}
 
                             if($withFilter){
-                                return $itemValue == $value && $item->{$parameters[2]} == $parameters[3] && $item->id != $ignore_id;
+                                return $itemValue == $value && $item->{$parameters[2]} == $parameters[3] && ($ignore_id != '' ? $item->id != $ignore_id : true) == true;
                             }else{
-                                return $itemValue == $value && $item->id != $ignore_id;
+                                return $itemValue == $value && ($ignore_id != '' ? $item->id != $ignore_id : true) == true;
                             }
                         });
                 if($data->first()){
