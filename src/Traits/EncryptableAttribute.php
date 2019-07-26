@@ -3,7 +3,6 @@
  * src/Traits/EncryptedAttribute.php.
  *
  * @author      JoeselDuazo <http://joeselduazo.com/>
- * @version     v0.3.18
  */
 
 namespace DustApplication\Encryption\Traits;

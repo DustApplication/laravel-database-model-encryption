@@ -1,4 +1,9 @@
 <?php
+/**
+ * src/Encryption.php.
+ *
+ * @author      JoeselDuazo <http://joeselduazo.com/>
+ */
 namespace DustApplication\Encryption;
 use Illuminate\Support\Facades\Crypt;
 class Encrypter

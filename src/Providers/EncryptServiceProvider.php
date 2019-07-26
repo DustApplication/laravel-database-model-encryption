@@ -1,4 +1,9 @@
 <?php
+/**
+ * src/Providers/EncryptServiceProvider.php.
+ *
+ * @author      JoeselDuazo <http://joeselduazo.com/>
+ */
 namespace DustApplication\Encryption\Providers;
 
 use Illuminate\Support\Facades\DB;
