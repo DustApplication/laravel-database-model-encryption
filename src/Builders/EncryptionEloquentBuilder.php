@@ -37,7 +37,7 @@ class EncryptionEloquentBuilder extends Builder
         }elseif(strtolower($filter->operation) == 'like'){
           $firstChar = substr($filter->value, 0, 1);
           $lastChar  = substr($filter->value, -1);
-          $filterValue = str_replace('%',$filter->value);
+          $filterValue = str_replace('%','',$filter->value);
 
 
           if($firstChar == '%' && $lastChar == '%'){
@@ -79,7 +79,7 @@ class EncryptionEloquentBuilder extends Builder
         }elseif(strtolower($filter->operation) == 'like'){
           $firstChar = substr($filter->value, 0, 1);
           $lastChar  = substr($filter->value, -1);
-          $filterValue = str_replace('%',$filter->value);
+          $filterValue = str_replace('%','',$filter->value);
 
           if($firstChar == '%' && $lastChar == '%'){
             return strripos($itemValue,$filterValue) === false ? false : true;
