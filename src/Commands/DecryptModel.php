@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * src/Commands/DecryptModel.php.
+ *
+ * @author      JoeselDuazo <http://joeselduazo.com/>
+ */
 namespace DustApplication\Encryption\Commands;
 
 use Illuminate\Console\Command;

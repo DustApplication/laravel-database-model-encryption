@@ -13,7 +13,7 @@ class Encrypter
      * @param $value
      * @return string
      */
-    public function encrypt($value)
+    public static function encrypt($value)
     {
         return $value ? Crypt::encrypt($value) : '';
     }
@@ -22,7 +22,7 @@ class Encrypter
      * @param $value
      * @return string
      */
-    public function decrypt($value)
+    public static function decrypt($value)
     {
         return $value ? Crypt::decrypt($value) : '';
     }
