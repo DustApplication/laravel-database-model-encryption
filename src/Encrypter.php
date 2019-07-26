@@ -8,6 +8,7 @@ namespace DustApplication\Encryption;
 use Illuminate\Support\Facades\Crypt;
 class Encrypter
 {
+    
     /**
      * @param $value
      * @return string
