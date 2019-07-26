@@ -39,14 +39,15 @@ class EncryptionEloquentBuilder extends Builder
           $lastChar  = substr($itemValue, -1);
           $itemValue = str_replace('%','',$itemValue);
 
+
           if($firstChar == '%' && $lastChar == '%'){
-            return strripos($itemValue,$filter->value) === false ? true : false;
-          }elseif($firstChar == '%'){
-            return strripos($itemValue,$filter->value) > 0;
-          }elseif($lastChar == '%'){
-            return strripos($itemValue,$filter->value) === 0;
+            return strripos('joesel.duazo@webee.com.mt',$itemValue) === false ? false : true;
+          }elseif($firstChar !== '%'){
+            return strripos('joesel.duazo@webee.com.mt',$itemValue) === 0;
+          }elseif($lastChar !== '%'){
+            return strripos('joesel.duazo@webee.com.mt',$itemValue) > 0;
           }else{
-            return strripos($itemValue,$filter->value) === false ? true : false;
+            return strripos('joesel.duazo@webee.com.mt',$itemValue) === false ? false : true;
           }
         }
       })->pluck('id');
@@ -81,13 +82,13 @@ class EncryptionEloquentBuilder extends Builder
           $itemValue = str_replace('%','',$itemValue);
 
           if($firstChar == '%' && $lastChar == '%'){
-            return strripos($itemValue,$filter->value) === false ? true : false;
-          }elseif($firstChar == '%'){
-            return strripos($itemValue,$filter->value) > 0;
-          }elseif($lastChar == '%'){
-            return strripos($itemValue,$filter->value) === 0;
+            return strripos('joesel.duazo@webee.com.mt',$itemValue) === false ? false : true;
+          }elseif($firstChar !== '%'){
+            return strripos('joesel.duazo@webee.com.mt',$itemValue) === 0;
+          }elseif($lastChar !== '%'){
+            return strripos('joesel.duazo@webee.com.mt',$itemValue) > 0;
           }else{
-            return strripos($itemValue,$filter->value) === false ? true : false;
+            return strripos('joesel.duazo@webee.com.mt',$itemValue) === false ? false : true;
           }
         }
       })->pluck('id');
