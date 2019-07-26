@@ -34,8 +34,20 @@ class EncryptionEloquentBuilder extends Builder
           return $itemValue == $filter->value;
         }elseif(in_array($filter->operation,['!=','!==','<>'])){
           return $itemValue != $filter->value || $itemValue !== $filter->value || $itemValue <> $filter->value;
-        }elseif($filter->operation == 'LIKE'){
-          return stripos($itemValue,$filter->value) === 0;
+        }elseif(strtolower($filter->operation) == 'like'){
+          $firstChar = substr($itemValue, 0, 1);
+          $lastChar  = substr($itemValue, -1);
+          $itemValue = str_replace('%','',$itemValue);
+
+          if($firstChar == '%' && $lastChar == '%'){
+            return strripos($itemValue,$filter->value) === false ? true : false;
+          }elseif($firstChar == '%'){
+            return strripos($itemValue,$filter->value) > 0;
+          }elseif($lastChar == '%'){
+            return strripos($itemValue,$filter->value) === 0;
+          }else{
+            return strripos($itemValue,$filter->value) === false ? true : false;
+          }
         }
       })->pluck('id');
 
@@ -63,8 +75,20 @@ class EncryptionEloquentBuilder extends Builder
           return $itemValue == $filter->value;
         }elseif(in_array($filter->operation,['!=','!==','<>'])){
           return $itemValue != $filter->value || $itemValue !== $filter->value || $itemValue <> $filter->value;
-        }elseif($filter->operation == 'LIKE'){
-          return stripos($itemValue,$filter->value) === 0;
+        }elseif(strtolower($filter->operation) == 'like'){
+          $firstChar = substr($itemValue, 0, 1);
+          $lastChar  = substr($itemValue, -1);
+          $itemValue = str_replace('%','',$itemValue);
+
+          if($firstChar == '%' && $lastChar == '%'){
+            return strripos($itemValue,$filter->value) === false ? true : false;
+          }elseif($firstChar == '%'){
+            return strripos($itemValue,$filter->value) > 0;
+          }elseif($lastChar == '%'){
+            return strripos($itemValue,$filter->value) === 0;
+          }else{
+            return strripos($itemValue,$filter->value) === false ? true : false;
+          }
         }
       })->pluck('id');
 
