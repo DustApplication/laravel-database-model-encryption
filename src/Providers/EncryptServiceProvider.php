@@ -74,9 +74,9 @@ class EncryptServiceProvider extends ServiceProvider
                     } catch (\Exception $e) {}
 
                     if($withFilter){
-                        return $itemValue == $value && $item->{$parameters[2]} == $parameters[3] && ($ignore_id != '' ? $item->id != $ignore_id : true) == true;
+                        return strtolower($itemValue) == strtolower($value) && $item->{$parameters[2]} == $parameters[3] && ($ignore_id != '' ? $item->id != $ignore_id : true) == true;
                     }else{
-                        return $itemValue == $value && ($ignore_id != '' ? $item->id != $ignore_id : true) == true;
+                        return strtolower($itemValue) == strtolower($value) && ($ignore_id != '' ? $item->id != $ignore_id : true) == true;
                     }
                 });
                 if($data->first()){
@@ -122,9 +122,9 @@ class EncryptServiceProvider extends ServiceProvider
                             } catch (\Exception $e) {}
 
                             if($withFilter){
-                                return $itemValue == $value && $item->{$parameters[2]} == $parameters[3] && ($ignore_id != '' ? $item->id != $ignore_id : true) == true;
+                                return strtolower($itemValue) == strtolower($value) && $item->{$parameters[2]} == $parameters[3] && ($ignore_id != '' ? $item->id != $ignore_id : true) == true;
                             }else{
-                                return $itemValue == $value && ($ignore_id != '' ? $item->id != $ignore_id : true) == true;
+                                return strtolower($itemValue) == strtolower($value) && ($ignore_id != '' ? $item->id != $ignore_id : true) == true;
                             }
                         });
                 if($data->first()){
